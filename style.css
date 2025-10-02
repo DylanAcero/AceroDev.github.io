@@ -1,0 +1,189 @@
+/* --- VARIABLES Y ESTILOS GLOBALES --- */
+:root {
+--color-primario: #0d1117;
+--color-secundario: #161b22;
+--color-texto: #c9d1d9;
+--color-acento: #58a6ff;
+--borde-color: #30363d;
+}
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+body {
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+background-color: var(--color-primario);
+color: var(--color-texto);
+line-height: 1.6;
+}
+.container {
+max-width: 960px;
+margin: 40px auto;
+padding: 0 20px;
+}
+/* --- BARRA DE NAVEGACIÓN (Navbar) --- */
+.navbar {
+background-color: var(--color-secundario);
+padding: 0.8rem 2rem;
+border-bottom: 1px solid var(--borde-color);
+display: flex;
+justify-content: space-between;
+align-items: center;
+/* Estilos para que quede fija en la parte superior */
+position: sticky;
+top: 0;
+width: 100%;
+z-index: 1000;
+}
+.logo-container {
+display: flex;
+align-items: center;
+gap: 15px;
+}
+.avatar-nav {
+width: 45px;
+height: 45px;
+border-radius: 50%;
+object-fit: cover;
+border: 2px solid var(--borde-color);
+}
+/* --- ¡ESTILOS PARA TU NUEVO LOGOTIPO! --- */
+/* Contenedor del logo para asegurar que se comporte como un bloque */
+.logo-link {
+display: flex; /* Ayuda a alinear la imagen dentro del enlace */
+align-items: center;
+}
+/* Estilos para la imagen del logo */
+.logo-img {
+height: 55px; /* Ajusta la altura de tu logo. El ancho se ajustará automáticamente */
+width: auto; /* Mantiene la proporción original de la imagen */
+}
+.navbar nav ul {
+list-style: none;
+display: flex;
+gap: 20px;
+}
+.navbar nav a {
+color: var(--color-texto);
+text-decoration: none;
+transition: color 0.3s ease;
+}
+.navbar nav a:hover {
+color: var(--color-acento);
+}
+/* --- ESTILOS GENERALES Y TÍTULOS DE SECCIÓN --- */
+section {
+/* Espacio superior para que la navbar fija no oculte los títulos */
+padding-top: 60px;
+margin-top: -40px; /* Compensa el padding para mantener el flujo visual */
+}
+h2 {
+font-size: 2rem;
+text-align: center;
+padding-bottom: 10px;
+border-bottom: 2px solid var(--color-acento);
+/* Ajuste para reducir el espacio entre el título y el párrafo */
+margin-bottom: 20px;
+}
+.btn {
+display: inline-block;
+background-color: var(--color-acento);
+color: var(--color-primario);
+padding: 10px 20px;
+text-decoration: none;
+border-radius: 5px;
+font-weight: bold;
+margin-top: 20px;
+transition: transform 0.3s ease;
+}
+.btn:hover {
+transform: translateY(-3px);
+}
+/* --- SECCIONES ESPECÍFICAS --- */
+.hero {
+text-align: center;
+padding: 80px 20px; /* Ajustado para el nuevo layout */
+}
+#sobre-mi p {
+max-width: 700px;
+margin: 0 auto; /* Centra el párrafo */
+text-align: center;
+/* Espacio entre el párrafo de "Sobre Mí" y el siguiente título */
+margin-bottom: 40px;
+}
+.habilidades {
+display: flex;
+justify-content: center;
+flex-wrap: wrap;
+gap: 10px;
+margin-top: 20px;
+}
+.habilidades span {
+background-color: var(--color-secundario);
+padding: 8px 15px;
+border-radius: 20px;
+font-size: 0.9rem;
+border: 1px solid var(--borde-color);
+}
+.grid-proyectos {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+gap: 20px;
+}
+.card-proyecto {
+background-color: var(--color-secundario);
+border: 1px solid var(--borde-color);
+border-radius: 8px;
+overflow: hidden;
+transition: transform 0.3s ease;
+display: flex;
+flex-direction: column;
+}
+.card-proyecto:hover {
+transform: translateY(-5px);
+}
+.card-proyecto img {
+width: 100%;
+height: 180px; /* Altura fija para las imágenes */
+object-fit: cover; /* Asegura que la imagen cubra el espacio sin deformarse */
+}
+.card-proyecto h3,
+.card-proyecto p,
+.card-proyecto .links-proyecto {
+padding: 0 20px;
+}
+.card-proyecto h3 {
+margin-top: 15px;
+color: white;
+}
+.card-proyecto p {
+margin-top: 10px;
+flex-grow: 1; /* Permite que el párrafo crezca para alinear los botones */
+}
+.card-proyecto .tecnologias {
+font-size: 0.8rem;
+font-style: italic;
+opacity: 0.8;
+flex-grow: 0; /* No debe crecer */
+}
+.links-proyecto {
+margin: 20px 0;
+padding-bottom: 20px;
+}
+.links-proyecto a {
+color: var(--color-acento);
+text-decoration: none;
+margin-right: 15px;
+font-weight: bold;
+}
+#contacto {
+text-align: center;
+}
+footer {
+text-align: center;
+padding: 20px;
+margin-top: 40px;
+border-top: 1px solid var(--borde-color);
+font-size: 0.9rem;
+}
