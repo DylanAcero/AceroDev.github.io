@@ -1,189 +1,253 @@
 /* --- VARIABLES Y ESTILOS GLOBALES --- */
 :root {
---color-primario: #0d1117;
---color-secundario: #161b22;
---color-texto: #c9d1d9;
---color-acento: #58a6ff;
---borde-color: #30363d;
+    --color-primario: #0d1117;
+    --color-secundario: #161b22;
+    --color-texto: #c9d1d9;
+    --color-acento: #58a6ff;
+    --borde-color: #30363d;
 }
 * {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    scroll-behavior: smooth; /* Scroll suave para anclas en la página (sin JavaScript) */
+    scroll-padding-top: 70px; /* Compensación para cabecera fija (header):contentReference[oaicite:4]{index=4} */
 }
 body {
-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-background-color: var(--color-primario);
-color: var(--color-texto);
-line-height: 1.6;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 16px; /* Tamaño base recomendado para buena legibilidad:contentReference[oaicite:5]{index=5} */
+    line-height: 1.6; /* Interlineado amplio (~160%) para mejorar lectura:contentReference[oaicite:6]{index=6} */
+    background-color: var(--color-primario);
+    color: var(--color-texto);
 }
 .container {
-max-width: 960px;
-margin: 40px auto;
-padding: 0 20px;
+    max-width: 960px;
+    margin: 0 auto; /* Eliminado margen superior, ahora las secciones manejan el espaciado */
+    padding: 0 20px;
 }
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1200px; /* Usar ancho mayor en pantallas muy grandes */
+    }
+}
+
 /* --- BARRA DE NAVEGACIÓN (Navbar) --- */
 .navbar {
-background-color: var(--color-secundario);
-padding: 0.8rem 2rem;
-border-bottom: 1px solid var(--borde-color);
-display: flex;
-justify-content: space-between;
-align-items: center;
-/* Estilos para que quede fija en la parte superior */
-position: sticky;
-top: 0;
-width: 100%;
-z-index: 1000;
+    background-color: var(--color-secundario);
+    padding: 0.8rem 2rem;
+    border-bottom: 1px solid var(--borde-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+
+    width: auto;
+    z-index: 1000;
 }
 .logo-container {
-display: flex;
-align-items: center;
-gap: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 .avatar-nav {
-width: 45px;
-height: 45px;
-border-radius: 50%;
-object-fit: cover;
-border: 2px solid var(--borde-color);
+    width: 60px;   /* Avatar más grande para destacar */
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--borde-color);
 }
-/* --- ¡ESTILOS PARA TU NUEVO LOGOTIPO! --- */
-/* Contenedor del logo para asegurar que se comporte como un bloque */
+@media (min-width: 1200px) {
+    .avatar-nav {
+        width: 80px;  /* Aún mayor en pantallas grandes */
+        height: 80px;
+    }
+}
 .logo-link {
-display: flex; /* Ayuda a alinear la imagen dentro del enlace */
-align-items: center;
+    display: flex;
+    align-items: center;
 }
-/* Estilos para la imagen del logo */
 .logo-img {
-height: 55px; /* Ajusta la altura de tu logo. El ancho se ajustará automáticamente */
-width: auto; /* Mantiene la proporción original de la imagen */
+    height: 150px;  /* Logo más grande para destacar */
+    width: auto;
+}
+@media (min-width: 1200px) {
+    .logo-img {
+        height: 80px; /* Aún mayor en pantallas grandes */
+    }
 }
 .navbar nav ul {
-list-style: none;
-display: flex;
-gap: 20px;
+    list-style: none;
+    display: flex;
+    gap: 20px;
 }
 .navbar nav a {
-color: var(--color-texto);
-text-decoration: none;
-transition: color 0.3s ease;
+    color: var(--color-texto);
+    text-decoration: none;
+    transition: color 0.3s ease;
 }
 .navbar nav a:hover {
-color: var(--color-acento);
+    color: var(--color-acento);
 }
-/* --- ESTILOS GENERALES Y TÍTULOS DE SECCIÓN --- */
-section {
-/* Espacio superior para que la navbar fija no oculte los títulos */
-padding-top: 60px;
-margin-top: -40px; /* Compensa el padding para mantener el flujo visual */
+/* Media query para nav en móvil: apilar verticalmente:contentReference[oaicite:7]{index=7} */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column; /* Poner elementos del header en columna */
+        align-items: center;
+    }
+    .navbar nav ul {
+        flex-direction: column; /* Enlaces del nav apilados */
+        gap: 10px;
+        margin-top: 10px; /* Separación del logo */
+    }
+}
+
+/* --- TIPOGRAFÍA Y SECCIONES --- */
+h1 {
+    font-size: 2.5rem; /* Título principal más grande para impacto */
+    margin-bottom: 10px;
 }
 h2 {
-font-size: 2rem;
-text-align: center;
-padding-bottom: 10px;
-border-bottom: 2px solid var(--color-acento);
-/* Ajuste para reducir el espacio entre el título y el párrafo */
-margin-bottom: 20px;
+    font-size: 2.2rem; /* Títulos de secciones importantes */
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--color-acento);
+    margin-bottom: 20px;
 }
+@media (min-width: 768px) {
+    h2 {
+        font-size: 2.5rem; /* Aun más grande en pantallas mayores */
+    }
+}
+section {
+    margin: 60px 0; /* Espaciado vertical entre secciones (reemplaza hacks anteriores) */
+}
+section p {
+    margin-bottom: 15px; /* Espacio entre párrafos y elementos siguientes */
+}
+
+/* --- BOTONES --- */
 .btn {
-display: inline-block;
-background-color: var(--color-acento);
-color: var(--color-primario);
-padding: 10px 20px;
-text-decoration: none;
-border-radius: 5px;
-font-weight: bold;
-margin-top: 20px;
-transition: transform 0.3s ease;
+    display: inline-block;
+    background-color: var(--color-acento);
+    color: var(--color-primario);
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-top: 20px;
+    transition: transform 0.3s ease;
 }
 .btn:hover {
-transform: translateY(-3px);
+    transform: translateY(-3px);
 }
-/* --- SECCIONES ESPECÍFICAS --- */
+
+/* --- SECCIÓN HERO --- */
 .hero {
-text-align: center;
-padding: 80px 20px; /* Ajustado para el nuevo layout */
+    text-align: center;
+    padding: 80px 20px;
+    margin-bottom: 60px; /* Separación tras el hero */
 }
+.hero h1,
+.hero p {
+    animation: fadeIn 1s ease-in-out; /* Animación de entrada suave */
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* --- SOBRE MÍ --- */
 #sobre-mi p {
-max-width: 700px;
-margin: 0 auto; /* Centra el párrafo */
-text-align: center;
-/* Espacio entre el párrafo de "Sobre Mí" y el siguiente título */
-margin-bottom: 40px;
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 40px;
 }
+
+/* --- HABILIDADES --- */
 .habilidades {
-display: flex;
-justify-content: center;
-flex-wrap: wrap;
-gap: 10px;
-margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
 }
 .habilidades span {
-background-color: var(--color-secundario);
-padding: 8px 15px;
-border-radius: 20px;
-font-size: 0.9rem;
-border: 1px solid var(--borde-color);
+    background-color: var(--color-secundario);
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    border: 1px solid var(--borde-color);
 }
+
+/* --- PROYECTOS --- */
 .grid-proyectos {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Columnas responsivas */
+    gap: 20px;
 }
 .card-proyecto {
-background-color: var(--color-secundario);
-border: 1px solid var(--borde-color);
-border-radius: 8px;
-overflow: hidden;
-transition: transform 0.3s ease;
-display: flex;
-flex-direction: column;
+    background-color: var(--color-secundario);
+    border: 1px solid var(--borde-color);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3); /* Sombra suave para destaque */
 }
 .card-proyecto:hover {
-transform: translateY(-5px);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0,0,0,0.5); /* Sombra más intensa al pasar el cursor */
 }
 .card-proyecto img {
-width: 100%;
-height: 180px; /* Altura fija para las imágenes */
-object-fit: cover; /* Asegura que la imagen cubra el espacio sin deformarse */
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
 }
 .card-proyecto h3,
 .card-proyecto p,
 .card-proyecto .links-proyecto {
-padding: 0 20px;
+    padding: 0 20px;
 }
 .card-proyecto h3 {
-margin-top: 15px;
-color: white;
+    margin-top: 15px;
+    color: white;
+    font-size: 1.3rem; /* Título de proyecto más grande */
 }
 .card-proyecto p {
-margin-top: 10px;
-flex-grow: 1; /* Permite que el párrafo crezca para alinear los botones */
+    margin-top: 10px;
+    flex-grow: 1;
 }
 .card-proyecto .tecnologias {
-font-size: 0.8rem;
-font-style: italic;
-opacity: 0.8;
-flex-grow: 0; /* No debe crecer */
+    font-size: 0.8rem;
+    font-style: italic;
+    opacity: 0.8;
+    flex-grow: 0;
 }
 .links-proyecto {
-margin: 20px 0;
-padding-bottom: 20px;
+    margin: 20px 0;
+    padding-bottom: 20px;
 }
 .links-proyecto a {
-color: var(--color-acento);
-text-decoration: none;
-margin-right: 15px;
-font-weight: bold;
+    color: var(--color-acento);
+    text-decoration: none;
+    margin-right: 15px;
+    font-weight: bold;
 }
+
+/* --- CONTACTO --- */
 #contacto {
-text-align: center;
+    text-align: center;
 }
+
+/* --- FOOTER --- */
 footer {
-text-align: center;
-padding: 20px;
-margin-top: 40px;
-border-top: 1px solid var(--borde-color);
-font-size: 0.9rem;
+    text-align: center;
+    padding: 20px;
+    margin-top: 60px; /* Más separación del contenido previo */
+    border-top: 1px solid var(--borde-color);
+    font-size: 0.9rem;
 }
